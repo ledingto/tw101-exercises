@@ -8,6 +8,15 @@ public class Main {
 
         Accumulator accumulator = new Accumulator();
 
+        int i=0;
+        while (i < 5){
+            accumulator.increment();
+            i++;
+        }
+
+        System.out.println("The number of times the method \"increment\" has been called is: " + accumulator.total());
+
+
 
     }
 }
