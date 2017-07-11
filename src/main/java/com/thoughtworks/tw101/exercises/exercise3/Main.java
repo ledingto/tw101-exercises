@@ -8,8 +8,14 @@ public class Main {
     public static void main(String[] args) {
         OddSum oddSum = new OddSum();
 
-        Integer sum = oddSum.of(1, 100);
+        Integer sum2500 = oddSum.of(1, 100);
+        Integer sum16 = oddSum.of(0, 8);
+        Integer sumOpp = oddSum.of(-200, 199);
+        Integer sumSame = oddSum.of(5, 5);
 
-        System.out.println(sum);
+        System.out.println(sum2500);
+        System.out.println(sum16);
+        System.out.println(sumOpp);
+        System.out.println(sumSame);
     }
 }
