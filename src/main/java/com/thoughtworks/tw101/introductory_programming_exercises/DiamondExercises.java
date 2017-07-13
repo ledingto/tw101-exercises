@@ -8,6 +8,8 @@ public class DiamondExercises {
         drawADiamond(8);
         System.out.println();
         drawADiamondWithYourName(3);
+        System.out.println();
+        drawADiamondWithYourNameCustom(8, "TWU");
     }
 
 //    Isosceles Triangle
@@ -112,6 +114,54 @@ public class DiamondExercises {
         }
         // print your name
         System.out.println("Laura");
+        // bottom of diamond -- use n-1 because nth line is your name
+        numSpaces = 0;
+        numStars = ((n-1)*2)-1;
+
+        for (int i=0; i<n-1; i++) {
+            // extra space in front of each line to align bottom with top
+            System.out.print(" ");
+            for (int j = 0; j < numSpaces; j++) {
+                System.out.print(" ");
+            }
+            for (int k = 0; k < numStars; k++) {
+                System.out.print("*");
+            }
+            System.out.println();
+            numSpaces++;
+            numStars -= 2;
+        }
+    }
+
+    //
+    // Customize the name and center the name within the diamond
+    //
+    private static void drawADiamondWithYourNameCustom(int n, String inputName) {
+        // top of diamond -- use n-1 because nth line is your name
+        int numSpaces = ((n-1)*2-1)/2;
+        int numStars = 1;
+
+        for (int i=0; i<n-1; i++) {
+            // extra space for alignment purposes
+            System.out.print(" ");
+            for (int j = 0; j < numSpaces; j++) {
+                System.out.print(" ");
+            }
+            for (int k = 0; k < numStars; k++) {
+                System.out.print("*");
+            }
+            System.out.println();
+            numSpaces--;
+            numStars += 2;
+        }
+        // print your name
+        int nameLength = inputName.length();
+        int nameSpaces = ((n*2-1)-nameLength)/2;
+        for (int l=0; l<nameSpaces; l++) {
+            System.out.print(" ");
+        }
+        System.out.println(inputName);
+
         // bottom of diamond -- use n-1 because nth line is your name
         numSpaces = 0;
         numStars = ((n-1)*2)-1;
