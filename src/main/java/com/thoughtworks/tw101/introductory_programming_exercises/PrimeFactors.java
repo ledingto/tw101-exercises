@@ -13,27 +13,40 @@ public class PrimeFactors {
     public static void main(String[] args) {
 
         List<Integer> primeFactors1 = generate(30);
-        List<Integer> primeFactors2 = generate(1);
-        List<Integer> primeFactors3 = generate(79);
-        List<Integer> primeFactors4 = generate(12);
-        List<Integer> primeFactors5 = generate(1000);
+        //List<Integer> primeFactors2 = generate(1);
+        //List<Integer> primeFactors3 = generate(79);
+        //List<Integer> primeFactors4 = generate(12);
+        //List<Integer> primeFactors5 = generate(1000);
 
         System.out.print(primeFactors1);
+
     }
 
     // factor of n: n%i==0
-    // prime:
+    // use pre-computed list of primes to only check factors [that are also prime]
     private static List<Integer> generate(int n) {
+        ArrayList<Integer> primes = firstNPrimes(n);
         ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i=1; i<=n; i++) {
-            if (n%i==0) {
-                if (isPrime(i)) {
-                    list.add(i);
-                }
+        for (int primeNum : primes) {
+            if (n%primeNum==0) {
+                    list.add(primeNum);
             }
         }
 
         return list;
+    }
+
+    /*
+    To improve runtime: store list of first 1000 prime numbers. Only check if these are factors of n if n<1000.
+     */
+    private static ArrayList<Integer> firstNPrimes(int n) {
+        ArrayList<Integer> primes = new ArrayList<Integer>();
+        for (int i=0; i<n+1; i++) {
+            if (isPrime(i)) {
+                primes.add(i);
+            }
+        }
+        return primes;
     }
 
     private static boolean isPrime(int n) {
