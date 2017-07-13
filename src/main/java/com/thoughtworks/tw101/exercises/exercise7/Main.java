@@ -5,34 +5,24 @@ package com.thoughtworks.tw101.exercises.exercise7;
 // until they get the right answer. Use classes to separate the different concerns of this program.
 
 import java.util.Scanner;
-import java.util.Random;
 
 public class Main {
-
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Random numGen = new Random();
+        String msg;
 
-        int number = numGen.nextInt(101);
+        // create game, which generates the random number to guess between 0 and 100
+        GuessingGame game = new GuessingGame(101);
 
-        System.out.print("Guess an integer number between 1 and 100: ");
-        int guess = scanner.nextInt();
+        // prompt user
+        System.out.print("Please guess an integer between 0 and 100: ");
 
         do {
-            if (guess < number) {
-                System.out.print("\nYou guessed too low. ");
-            }
-            else if (guess > number) {
-                System.out.print("\nYou guessed too high. ");
-            }
-            else { break; }
-
-            System.out.print("Please guess again: ");
-            guess = scanner.nextInt();
+            msg = game.guess(scanner.nextInt());
+            System.out.print(msg);
         }
-        while (guess != number);
+        while (!(msg.equals("You win!")));
 
-        System.out.println("\nYou win! You guessed: " + guess + " and the number was: " + number + ".");
     }
 }
